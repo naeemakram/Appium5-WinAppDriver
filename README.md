@@ -1,6 +1,10 @@
 ﻿# How to run WinAppDriver with Appium 5
 ---
 
+## Do check my Udemy courses related to Windows Automation with WinAppDriver and running automation on Azure DevOps
+[Appium WinAppDriver C# Windows Desktop UI Automation Testing](https://www.udemy.com/course/appium-winappdriver-automation-testing/?referralCode=ED22C3A4CE5BB5E22E53)
+[Azure DevOps Build Pipelines: Run Windows UI Automation & CI](https://www.udemy.com/course/windows-ui-automation-on-azure-devops-build-pipelines/?referralCode=31F4FCC272434D3B1C3C)
+
 
 ## Pre-requisites:
 * You must have installed Node.JS and Appium 2.0
