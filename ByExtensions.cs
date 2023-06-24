@@ -28,5 +28,16 @@ namespace Appium5WAD
             Assert.NotNull(value);
             return By.XPath($"//*[@{attribute}='{value}']");
         }
+
+        public static By XPathByClassContains(this string value)
+        {
+            Assert.NotNull(value);
+            return By.XPath($"//*[contains(@class, '{value}')]");
+        }
+        public static By XPathByTextContains(this string value)
+        {
+            Assert.NotNull(value);
+            return By.XPath($"//*[contains(Text(), '{value}')]");
+        }
     }
 }
