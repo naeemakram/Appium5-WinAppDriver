@@ -17,6 +17,11 @@ appium driver install--source = npm appium - windows - driver
 ```console
 appium driver list --installed
 ```
+* How to see all appium drivers
+```console
+appium driver list
+```
+[Imgur](https://imgur.com/xrTZcYa)
 * You must have installed appium windows driver 
 * The command for appium windows driver installation
 ```console
