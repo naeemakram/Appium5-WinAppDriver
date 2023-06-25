@@ -10,12 +10,18 @@
 ## Pre-requisites:
 * You must have installed Node.JS and Appium 2.0
 * The command for updating existing Appium installation is given below
-`appium driver install--source = npm appium - windows - driver `
+```console
+appium driver install--source = npm appium - windows - driver
+```
 * The command to see the list of installed appium drivers
-`appium driver list --installed `
+```console
+appium driver list --installed
+```
 * You must have installed appium windows driver 
 * The command for appium windows driver installation
-`appium driver install --source=npm appium-windows-driver `
+```console
+appium driver install --source=npm appium-windows-driver
+```
 
 
 ## The differnce between Appium 4 and Appium 5, how it impacts WinAppDriver automation
@@ -30,7 +36,7 @@ There's one more caveat, if you use `By.Id` or `By.Name` in Appium 5 they get tr
 to `By.Css` under the hood. When this happens, the WinAppDriver is unable to locate 
 controls for you.
 My solution to this problem is using `By.XPath` as following:
-```
+```CS
         public static By XPathById(this string id)
         {
             Assert.NotNull(id);
@@ -38,6 +44,6 @@ My solution to this problem is using `By.XPath` as following:
         }
 ```
 
-These extension methods are also available herein. 
+These extension methods are also available in this repository.
 This code sample shows you how you can run WinAppDriver based automation with 
 Appium 5.
