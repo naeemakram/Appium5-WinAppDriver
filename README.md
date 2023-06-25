@@ -21,6 +21,7 @@ appium driver list --installed
 ```console
 appium driver list
 ```
+(https://i.imgur.com/xrTZcYa.png "List of Appium Drivers")
 [Imgur](https://imgur.com/xrTZcYa)
 * You must have installed appium windows driver 
 * The command for appium windows driver installation
