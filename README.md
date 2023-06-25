@@ -33,11 +33,23 @@ appium driver install --source=npm appium-windows-driver
 ## The differnce between Appium 4 and Appium 5, how it impacts WinAppDriver automation
 
 In the past, it was possible for your scripts to directly talk to the WinAppDriver.
-But in the latest version of Appium, everything must flow through an Appium Dribver. 
+But in the latest version of Appium, everything must flow through an Appium Driver.
 In case of Windows this driver is appium-windows-driver.
-The Appium Windows Driver has a separate repository on GitHub. You also need to 
-install WinAppDriver on the machine where you want to run the automation.
+The Appium Windows Driver has a separate repository on GitHub.
+You also need to install WinAppDriver on the machine where you want to run the automation.
 
+### Using AppiumServiceBuilder
+If you want to use WinAppDriver with Appium 5, you'll need to use the AppiumServiceBuilder class.
+The code for creating an AppiumServiceBuilder which works with WinAppDriver is given below:
+```CS 
+var appiumLocalService = new AppiumServiceBuilder()
+                .UsingAnyFreePort()
+                .WithLogFile(new FileInfo(@"E:\logs\TestLog.txt"))
+                .WithStartUpTimeOut(TimeSpan.FromSeconds(60))
+                .Build();
+
+            appiumLocalService.Start();
+```
 There's one more caveat, if you use `By.Id` or `By.Name` in Appium 5 they get translated
 to `By.Css` under the hood. When this happens, the WinAppDriver is unable to locate 
 controls for you.
