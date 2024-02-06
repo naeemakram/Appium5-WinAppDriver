@@ -36,6 +36,7 @@ namespace Appium5WAD
             // command for appium windows driver installation
             // appium driver install --source=npm appium-windows-driver
 
+
             var appiumLocalService = new AppiumServiceBuilder()
                 .UsingAnyFreePort()
                 .WithLogFile(new FileInfo(@"E:\logs\TestLog.txt"))
@@ -55,10 +56,10 @@ namespace Appium5WAD
             Assert.NotNull(calcDriver);
 
             // TODO: Figure out how to avoid using CSS by default
-            calcDriver?.FindElement(EasyXPath.AnywhereAnythingByName(name: "One")).Click();
-            calcDriver?.FindElement(EasyXPath.AnywhereAnythingByName(name: "Plus")).Click();
-            calcDriver?.FindElement(EasyXPath.AnywhereAnythingByName(name: "One")).Click();
-            calcDriver?.FindElement(EasyXPath.AnywhereAnythingByName(name: "Equals")).Click();
+            calcDriver?.FindElement(MobileBy.Name("One")).Click();
+            calcDriver?.FindElement(MobileBy.Name("Plus")).Click();
+            calcDriver?.FindElement(MobileBy.Name("One")).Click();
+            calcDriver?.FindElement(MobileBy.Name("Equals")).Click();
 
             var results = calcDriver?.FindElement(EasyXPath.AnywhereAnythingByAutomationId("CalculatorResults"));
 
@@ -67,5 +68,29 @@ namespace Appium5WAD
             Assert.True(results?.Text.Trim().EndsWith("2"));
         }
 
+        [Fact]
+        public void TestLaunchAlarms()
+        {
+            var alarmsApplication = "Microsoft.WindowsAlarms_8wekyb3d8bbwe!App";
+            var appiumLocalService = new AppiumServiceBuilder()
+               .UsingAnyFreePort()
+               .WithLogFile(new FileInfo(@"E:\logs\TestLog.txt"))
+               .WithStartUpTimeOut(TimeSpan.FromSeconds(60))
+               .Build();
+
+            appiumLocalService.Start();
+
+
+            AppiumOptions appiumOptions = new AppiumOptions();
+            appiumOptions.App = alarmsApplication;
+            appiumOptions.AutomationName = "Windows";// you must specify this name
+            appiumOptions.AddAdditionalAppiumOption("ms:WaitForAppLaunch", "60");
+
+            var alarmsAndClocks = new WindowsDriver(appiumLocalService, appiumOptions);
+
+            Assert.NotNull(alarmsAndClocks);
+
+            alarmsAndClocks.Quit();
+        }
     }
 }  
